@@ -1,0 +1,61 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "width": 800,
+    "height": 600,
+    "padding": 5,
+    "autosize": "none",
+  
+    "data": [
+      {
+        "name": "table",
+        "url": "Dataset/sankey_medalstotal.csv",
+        "format": {"type": "csv"},
+        "transform": [
+          {"fold": ["Gold Medal", "Silver Medal", "Bronze Medal"], "as": ["medal_type", "medal_count"]}
+        ]
+      },
+      {
+        "name": "nodes",
+        "source": "table",
+        "transform": [
+          {
+            "type": "aggregate",
+            "groupby": ["region", "medal_type", "country_long"]
+          },
+          {
+            "type": "formula",
+            "as": "id",
+            "expr": "datum.region + '-' + datum.medal_type + '-' + datum.country_long"
+          }
+        ]
+      },
+      {
+        "name": "links",
+        "source": "table",
+        "transform": [
+          {
+            "type": "lookup",
+            "from": "nodes",
+            "key": "id",
+            "fields": ["region", "medal_type", "country_long"],
+            "as": ["source", "target"]
+          }
+        ]
+      }
+    ],
+  
+    "marks": [
+      {
+        "type": "rect",
+        "from": {"data": "nodes"},
+        "encode": {
+          "enter": {
+            "x": {"scale": "x", "field": "medal_type"},
+            "y": {"scale": "y", "field": "region"},
+            "width": {"scale": "medal_count", "band": 1}
+          }
+        }
+      }
+    ]
+  }
+  

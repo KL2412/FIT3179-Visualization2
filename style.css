@@ -1,0 +1,69 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url(img/paris.png) no-repeat center center fixed;
+    background-size: cover;
+    color: #2c3e50;
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+}
+
+h1 {
+    color: #1a5276;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #2980b9;
+    font-size: 2em;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h3 {
+    color: #2980b9;
+    font-size: 1.5em;
+    font-family: 'Times New Roman', Times, serif;
+    padding-top: 30px;
+}
+
+p {
+    font-size: 1.1em;
+    margin: 20px auto;
+    width: 70%;
+    line-height: 1.8;
+    color: black;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.4);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+#vis-chloropleth, #vis-wordcloud, #vis-donut, #vis-lollipop, #vis-isotype, #vis-dotplot {
+    margin: 10px auto;
+    width: 1200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+#vis-chloropleth svg, #vis-wordcloud svg, #vis-donut svg, #vis-lollipop svg, #vis-isotype svg, #vis-dotplot svg {
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.paragraph {
+    margin: 40px auto;
+    max-width: 700px;
+}
+
+.titleVizDiv {
+    margin: 40px auto;
+    width: 1200px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}

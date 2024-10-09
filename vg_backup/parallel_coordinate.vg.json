@@ -1,0 +1,28 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "Dataset/athlete_performance.csv"
+    },
+    "mark": "line",
+    "params": [
+      {
+        "name": "brush",
+        "select": {"type": "interval", "encodings": ["x"]}
+      }
+    ],
+    "encoding": {
+      "color": {
+        "field": "gender",
+        "type": "nominal",
+        "legend": {"title": "Gender"}
+      },
+      "x": {"field": "age", "type": "quantitative", "title": "Age"},
+      "y": {"field": "country_long", "type": "nominal", "title": "Country"},
+      "tooltip": [
+        {"field": "country_long", "type": "nominal", "title": "Country"},
+        {"field": "age", "type": "quantitative", "title": "Age"},
+        {"field": "gender", "type": "nominal", "title": "Gender"}
+      ]
+    }
+  }
+  

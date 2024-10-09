@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paris Olympics 2024</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <img src="img/olympics.png" alt="Olympics Logo" width="" height="200">
+    <h1>The Paris 2024 Olympics</h1>
+
+    <div class="titleVizDiv">
+        <h2>Medals Won per Million People in All Countries</h2>
+        <div id="vis-chloropleth"></div>
+    </div>
+
+    <div class="titleVizDiv">
+        <h2>Overall Winners of Olympics 2024</h2>
+        <div id="vis-isotype"></div>
+        <div style="width: 30%; float:left; padding-top:120px">
+            <div class="new-sports-images">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/255px-Flag_of_the_People%27s_Republic_of_China.svg.png" alt="CHINA" width="300" height="180">
+            </div>
+        </div>
+        <div style="width: 30%; float:right; padding-top:120px">
+            <div class="new-sports-images">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg/640px-Flag_of_the_United_States_%28DoS_ECA_Color_Standard%29.svg.png" alt="USA" width="300" height="180">
+            </div>
+        </div>
+        <h3>China versus United States</h3>
+        <div class="paragraph">
+            <p>
+                <b>China</b> began to emerge as a serious competitor to the <b>United States</b> in the Olympics around the early 2000s, 
+                particularly with their standout performance at the 2008 Beijing Games, where they topped the gold medal 
+                count for the first time. Before this, the United States had been the dominant force in the modern Olympics 
+                since the early 20th century, consistently leading the medal tally across multiple Games. The rivalry between 
+                the two nations has intensified in recent decades, with <b>China steadily closing the gap and challenging the U.S.</b>
+                in various sports, making it one of the most captivating contests at each Olympics.
+            </p>
+        </div>
+    </div>
+
+    <div class="titleVizDiv">
+        <h2>Google Search Trends: Trending Sports during Olympics 2024</h2>
+        <div id="vis-wordcloud"></div>
+    </div>
+
+    <div class="titleVizDiv">
+        <h2>Who Won The Trending Sports?</h2>
+        <div id="vis-donut"></div>
+    </div>
+
+    <div class="titleVizDiv">
+        <h2>Age Distribution of Olympians Across Sports</h2>
+        <div id="vis-lollipop"></div>
+        <h3>Why Equestrian is the Sport Where Age is an Advantage</h3>
+        <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; text-align: center;">
+            <div style="width: 40%; float:left; padding-top:40px; padding-left:80px">
+                <div class="new-sports-images">
+                    <img src="https://www.eurodressage.com/sites/default/files/database-story-thumb/2020-03/20_bawleypoint_hanna_calanta_01.jpg" alt="Mary Hanna" width="359" height="453">
+                </div>
+                <i>Mary Hanna, 70 years old<br/>
+                    The oldest olympian in Olympics 2024</i>
+            </div>
+            <div class="paragraph">
+                <p>
+                    <b>Equestrian</b> is a unique Olympic sport that involves athletes competing in various disciplines such as dressage, 
+                    show jumping, and eventing, all of which require exceptional skill in riding and handling horses. 
+                    What sets equestrian apart is the close partnership between rider and horse, demanding not just physical 
+                    strength but also years of training, experience, and trust. Olympians in equestrian tend to be older compared 
+                    to athletes in other sports because <b>the sport relies heavily on technique, experience, and strategic decision-making, 
+                        which often improve with age</b>. Riders in their 40s and even 50s are not uncommon, as their expertise and bond with their
+                     horses can give them an edge in competition.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="titleVizDiv">
+        <h2>Olympic Sports Over Years</h2>
+        <div id="vis-dotplot"></div>
+        <h3>New Sports in Olympics 2024</h3>
+        <div style="width: 30%; float:left">
+            <div class="new-sports-images">
+                <img src="img/breaking.png" alt="Breaking" width="180" height="180">
+                <img src="img/skateboarding.png" alt="Skateboarding" width="180" height="180">
+            </div>
+        </div>
+        <div style="width: 30%; float:right">
+            <div class="new-sports-images">
+                <img src="img/sportclimbing.png" alt="Sport Climbing" width="180" height="180">
+                <img src="img/surfing.png" alt="Surfing" width="180" height="180">
+            </div>
+        </div>
+        <div class="paragraph">
+            <p>
+                For the first time in Olympic history, Paris 2024 will introduce several new sports, such as <b>breaking</b>, 
+                <b>skateboarding</b>, <b>surfing</b>,and <b>sport climbing</b>, pushing the boundaries of the traditional Olympic program. These additions 
+                reflect the dynamic evolution of global sports culture, making the Games more relatable to younger audiences. 
+                The introduction of these modern disciplines is part of a broader effort to innovate while staying true to the 
+                Olympic spirit of pushing limits, breaking records, and celebrating diversity through competition.
+            </p>
+        </div>
+        <div style="padding-bottom: 80px;"></div>
+    </div>
+
+    <script>
+        fetch('chloropleth.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#vis-chloropleth', spec);
+            })
+            .catch(error => {
+                console.error('Error loading the Choropleth spec:', error);
+            });
+
+        fetch('wordcloud.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#vis-wordcloud', spec);
+            })
+            .catch(error => {
+                console.error('Error loading the Word Cloud spec:', error);
+            });
+
+        fetch('donut.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#vis-donut', spec);
+            })
+            .catch(error => {
+                console.error('Error loading the Donut spec:', error);
+            });
+
+        fetch('lollipop.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#vis-lollipop', spec);
+            })
+            .catch(error => {
+                console.error('Error loading the Lollipop spec:', error);
+            });
+
+        fetch('isotype.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#vis-isotype', spec);
+            })
+            .catch(error => {
+                console.error('Error loading the Lollipop spec:', error);
+            });
+
+        fetch('dotplot.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#vis-dotplot', spec);
+            })
+            .catch(error => {
+                console.error('Error loading the Lollipop spec:', error);
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Donut chart of countries and the medals they won in various sports.",
+  "data": {
+    "url": "Dataset/medals.csv"
+  },
+  "transform": [
+    {
+      "filter": {
+        "field": "discipline",
+        "oneOf": ["Artistic Gymnastics", "Basketball", "Surfing", "Sailing", "Volleyball", "Swimming"]
+      }
+    }
+  ],
+  "facet": {
+    "field": "discipline",
+    "title": null, 
+    "type": "nominal",
+    "header": {
+      "labelFontSize": 16
+    }
+  },
+  "columns": 3,
+  "spec": {
+    "mark": {"type": "arc", "innerRadius": 80, "radius":150},
+    "encoding": {
+      "theta": {
+        "aggregate": "count",
+        "field": "medal_type",
+        "type": "quantitative"
+      },
+      "color": {
+        "field": "country",
+        "type": "nominal",
+        "legend": {
+          "title": "Country",
+          "titleFontSize": 16,
+          "labelFontSize": 14
+        },
+        "scale": {
+          "scheme": "category20"
+        }
+      },
+      "tooltip": [
+        {"field": "country", "type": "nominal", "title": "Country"},
+        {"field": "medal_type", "type": "nominal", "title": "Medal Type"},
+        {"aggregate": "count", "field": "medal_type", "type": "quantitative", "title": "Medals Won"}
+      ]
+    }
+  }
+}

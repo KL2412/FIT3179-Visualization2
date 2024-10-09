@@ -1,0 +1,50 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "Dataset/medals.csv"
+  },
+  "transform": [
+    {
+      "aggregate": [{"op": "count", "as": "medal_count"}],
+      "groupby": ["country_long", "medal_type"]
+    },
+    {
+      "window": [{"op": "sum", "field": "medal_count", "as": "total_medals"}],
+      "groupby": ["country_long"]
+    },
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "sort": [{"field": "total_medals", "order": "descending"}]
+    },
+    {
+      "filter": "datum.rank <= 20"
+    }
+  ],
+  "mark": "circle",
+  "encoding": {
+    "x": {"field": "medal_type", "type": "nominal", "title": "Medal Type"},
+    "y": {
+      "field": "country_long",
+      "type": "nominal",
+      "title": "Country"
+    },
+    "size": {
+      "field": "medal_count",
+      "type": "quantitative",
+      "title": "Number of Medals"
+    },
+    "color": {
+      "field": "medal_type",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Gold Medal", "Silver Medal", "Bronze Medal"],
+        "range": ["#FFD700", "#C0C0C0", "#CD7F32"]
+      }
+    },
+    "tooltip": [
+      {"field": "country_long", "type": "nominal", "title": "Country"},
+      {"field": "medal_type", "type": "nominal", "title": "Medal Type"},
+      {"field": "medal_count", "type": "quantitative", "title": "Medal Count"}
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "url": "Dataset/summer_sport_over_year.csv"
+  },
+  "width": 900,
+  "height": 900,
+  "mark": {"type": "circle", "size": 50},
+  "params": [
+    {
+      "name": "startYear",
+      "value": 1896,
+      "bind": {
+        "input": "range",
+        "min": 1896,
+        "max": 2024,
+        "step": 4,
+        "name": "Select Start Year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum.Year >= startYear"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "axis": {
+        "labelAngle": -45,
+        "labelFontSize": 16,
+        "titleFontSize": 20
+      }
+    },
+    "y": {
+      "field": "Sport",
+      "type": "nominal",
+      "sort": "-x",
+      "axis": {
+        "labelFontSize": 16,
+        "titleFontSize": 20
+      }
+    },
+    "color": {"value": "steelblue"},
+    "tooltip": [
+      {"field": "Year", "type": "ordinal"},
+      {"field": "Sport", "type": "nominal"}
+    ]
+  },
+  "config": {
+    "view": {"stroke": null},
+    "axis": {
+      "grid": true,
+      "tickBand": "extent"
+    }
+  }
+}

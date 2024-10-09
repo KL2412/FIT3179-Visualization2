@@ -1,0 +1,124 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Age Distribution of Olympians Across Sports",
+    "fontSize": 16,
+    "anchor": "middle"
+  },
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "Dataset/athletes.csv"
+  },
+"transform": [
+  {
+    "calculate": "trim(replace(replace(replace(replace(datum.disciplines, '\\[', ''), '\\]', ''), '\\'', ''), '', ''))",
+    "as": "clean_disciplines"
+  },
+  {
+    "calculate": "split(datum.clean_disciplines, ', ')",
+    "as": "disciplines_array"
+  },
+  {
+    "flatten": ["disciplines_array"]
+  },
+  {
+    "calculate": "2024 - year(datum.birth_date)",
+    "as": "age"
+  },
+  {
+    "aggregate": [
+      {"op": "min", "field": "age", "as": "youngest_age"},
+      {"op": "max", "field": "age", "as": "oldest_age"},
+      {"op": "mean", "field": "age", "as": "avg_age"}
+    ],
+    "groupby": ["disciplines_array"]
+  }
+],
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+        "color": "lightgray"
+      },
+      "encoding": {
+        "x": {
+          "field": "disciplines_array",
+          "type": "nominal",
+          "axis": {"title": "Sport Category", "labelAngle": 45}
+        },
+        "y": {
+          "field": "youngest_age",
+          "type": "quantitative",
+          "axis": {"title": "Age"}
+        },
+        "y2": {
+          "field": "oldest_age"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "color": "gold",
+        "size": 100
+      },
+      "encoding": {
+        "x": {
+          "field": "disciplines_array",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "youngest_age",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "disciplines_array", "type": "nominal", "title": "Sport"},
+          {"field": "youngest_age", "type": "quantitative", "title": "Youngest Age"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "color": "black",
+        "size": 100
+      },
+      "encoding": {
+        "x": {
+          "field": "disciplines_array",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "avg_age",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "disciplines_array", "type": "nominal", "title": "Sport"},
+          {"field": "avg_age", "type": "quantitative", "title": "Average Age"}
+        ]
+      }
+    },
+    {
+      "mark": {
+        "type": "circle",
+        "color": "orange",
+        "size": 100
+      },
+      "encoding": {
+        "x": {
+          "field": "disciplines_array",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "oldest_age",
+          "type": "quantitative"
+        },
+        "tooltip": [
+          {"field": "disciplines_array", "type": "nominal", "title": "Sport"},
+          {"field": "oldest_age", "type": "quantitative", "title": "Oldest Age"}
+        ]
+      }
+    }
+  ]
+}
