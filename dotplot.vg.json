@@ -50,7 +50,7 @@
     "color": {
       "field": "Sport",
       "type": "nominal",
-      "legend": {"title": "Sport"}
+      "legend": null
     },
     "tooltip": [
       {"field": "Year", "type": "ordinal"},
