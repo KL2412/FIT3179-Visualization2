@@ -1,8 +1,8 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "width": 900,
-  "height": 400,
-  "padding": 5,
+  "height": 600,
+  "padding": 20,
   "data": {
     "name": "sankey_data",
     "url": "Dataset/sankey_data.csv"

@@ -62,7 +62,7 @@ Czechia,CZE,203,10873689,3,0,2,5,Europe
 Denmark,DNK,208,5946952,2,2,5,9,Europe
 Djibouti,DJI,262,1136455,0,0,0,0,Africa
 Dominica,DMA,212,73040,1,0,0,1,North America
-Dominican Republic,DOM,214,11332972,1,0,2,3,North America
+Dominican Rep.,DOM,214,11332972,1,0,2,3,North America
 Ecuador,ECU,218,18190484,1,2,2,5,South America
 Egypt,EGY,818,112716598,1,1,1,3,Africa
 El Salvador,SLV,222,6364943,0,0,0,0,North America
@@ -145,7 +145,7 @@ Mauritius,MUS,480,1261041,0,0,0,0,Africa
 Mayotte,MYT,175,0,0,0,0,0,Africa
 Mexico,MEX,484,128455567,0,3,2,5,North America
 "Micronesia, Federated States of",FSM,583,115224,0,0,0,0,Oceania
-"Moldova, Republic of",MDA,498,2486891,0,1,3,4,Europe
+"Moldova",MDA,498,2486891,0,1,3,4,Europe
 Monaco,MCO,492,36297,0,0,0,0,Europe
 Mongolia,MNG,496,3447157,0,1,0,1,Asia
 Montenegro,MNE,499,616177,0,0,0,0,Europe
@@ -156,7 +156,7 @@ Myanmar,MMR,104,54577997,0,0,0,0,Asia
 Namibia,NAM,516,2604172,0,0,0,0,Africa
 Nauru,NRU,520,12780,0,0,0,0,Oceania
 Nepal,NPL,524,30896590,0,0,0,0,Asia
-"Netherlands, Kingdom of the",NLD,528,17879488,15,7,12,34,Europe
+"Netherlands",NLD,528,17879488,15,7,12,34,Europe
 New Caledonia,NCL,540,267940,0,0,0,0,Oceania
 New Zealand,NZL,554,5223100,10,7,3,20,Oceania
 Nicaragua,NIC,558,7046310,0,0,0,0,North America
@@ -235,8 +235,8 @@ Tuvalu,TUV,798,11396,0,0,0,0,Oceania
 Uganda,UGA,800,48582334,1,1,0,2,Africa
 Ukraine,UKR,804,37000000,3,5,4,12,Europe
 United Arab Emirates,ARE,784,9516871,0,0,0,0,Asia
-United Kingdom of Great Britain and Northern Ireland,GBR,826,68350000,14,22,29,65,Europe
-United States of America,USA,840,334914895,40,44,42,126,North America
+United Kingdom,GBR,826,68350000,14,22,29,65,Europe
+United States,USA,840,334914895,40,44,42,126,North America
 United States Minor Outlying Islands,UMI,581,0,0,0,0,0,North America
 Uruguay,URY,858,3423108,0,0,0,0,South America
 Uzbekistan,UZB,860,36412350,8,2,3,13,Asia
