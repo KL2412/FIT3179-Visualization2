@@ -1,318 +1,409 @@
 {
-    "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "description": "Sankey Diagram showing sports, medal types, and countries.",
-    "width": 1000,
-    "height": 800,
-    "padding": {"bottom": 20, "left": 20, "right": 30, "top": 40},
-    "signals": [
-      {
-        "name": "standardGap",
-        "value": 14,
-        "description": "Gap as a percentage of full domain"
-      },
-      {
-        "name": "base",
-        "value": "center",
-        "description": "How to stack(center or zero)"
-      }
-    ],
-    "data": [
-      {
-        "name": "input",
-        "values": [
-          {"category": "Gymnastics", "stack": 1, "sort": 1, "labels": "left"},
-          {"category": "Basketball", "stack": 1, "sort": 2, "labels": "left"},
-          {"category": "Swimming", "stack": 1, "sort": 3, "labels": "left"},
-          {"category": "Surfing", "stack": 1, "sort": 4, "labels": "left"},
-          {"category": "Sailing", "stack": 1, "sort": 5, "labels": "left"},
-          {"category": "Volleyball", "stack": 1, "sort": 6, "labels": "left"},
-          {"category": "Cycling Road", "stack": 1, "sort": 7, "labels": "left"},
-          {"category": "Gold", "stack": 2, "sort": 1},
-          {"category": "Silver", "stack": 2, "sort": 2},
-          {"category": "Bronze", "stack": 2, "sort": 3},
-          {"category": "Belgium", "stack": 3},
-          {"category": "Italy", "stack": 3},
-          {"category": "Australia", "stack": 3},
-          {
-            "source": "Gymnastics",
-            "destination": "Gold",
-            "value": 5
-          },
-          {
-            "source": "Basketball",
-            "destination": "Silver",
-            "value": 3
-          },
-          {
-            "source": "Swimming",
-            "destination": "Bronze",
-            "value": 2
-          },
-          {
-            "source": "Surfing",
-            "destination": "Gold",
-            "value": 4
-          },
-          {
-            "source": "Sailing",
-            "destination": "Silver",
-            "value": 2
-          },
-          {
-            "source": "Volleyball",
-            "destination": "Bronze",
-            "value": 3
-          },
-          {
-            "source": "Cycling Road",
-            "destination": "Gold",
-            "value": 1
-          },
-          {
-            "source": "Gold",
-            "destination": "Belgium",
-            "value": 6
-          },
-          {
-            "source": "Silver",
-            "destination": "Italy",
-            "value": 5
-          },
-          {
-            "source": "Bronze",
-            "destination": "Australia",
-            "value": 4
-          }
-        ]
-      },
-      {
-        "name": "stacks",
-        "source": "input",
-        "transform": [
-          {"type": "filter", "expr": "datum.source != null"},
-          {"type": "formula", "as": "end", "expr": "['source','destination']"},
-          {
-            "type": "formula",
-            "as": "name",
-            "expr": "[ datum.source,datum.destination]"
-          },
-          {"type": "project", "fields": ["end", "name", "value"]},
-          {"type": "flatten", "fields": ["end", "name"]},
-          {
-            "type": "lookup",
-            "from": "input",
-            "key": "category",
-            "values": ["stack", "sort", "gap", "labels"],
-            "fields": ["name"],
-            "as": ["stack", "sort", "gap", "labels"]
-          },
-          {
-            "type": "aggregate",
-            "fields": ["value", "stack", "sort", "gap", "labels"],
-            "groupby": ["end", "name"],
-            "ops": ["sum", "max", "max", "max", "max"],
-            "as": ["value", "stack", "sort", "gap", "labels"]
-          },
-          {
-            "type": "aggregate",
-            "fields": ["value", "stack", "sort", "gap", "labels"],
-            "groupby": ["name"],
-            "ops": ["max", "max", "max", "max", "max"],
-            "as": ["value", "stack", "sort", "gap", "labels"]
-          },
-          {"type": "formula", "as": "gap", "expr": "datum.gap?datum.gap:0"}
-        ]
-      },
-      {
-        "name": "maxValue",
-        "source": ["stacks"],
-        "transform": [
-          {
-            "type": "aggregate",
-            "fields": ["value"],
-            "groupby": ["stack"],
-            "ops": ["sum"],
-            "as": ["value"]
-          },
-          {
-            "type": "aggregate",
-            "fields": ["value"],
-            "ops": ["max"],
-            "as": ["value"]
-          }
-        ]
-      },
-      {
-        "name": "plottedStacks",
-        "source": ["stacks"],
-        "transform": [
-          {
-            "type": "formula",
-            "as": "spacer",
-            "expr": " (data('maxValue')[0].value/100)*(standardGap+datum.gap)"
-          },
-          {"type": "formula", "as": "type", "expr": "['data','spacer']"},
-          {
-            "type": "formula",
-            "as": "spacedValue",
-            "expr": "[datum.value,datum.spacer]"
-          },
-          {"type": "flatten", "fields": ["type", "spacedValue"]},
-          {
-            "type": "stack",
-            "groupby": ["stack"],
-            "sort": {"field": "sort", "order": "descending"},
-            "field": "spacedValue",
-            "offset": {"signal": "base"}
-          },
-          {"type": "formula", "expr": "((datum.value)/2)+datum.y0", "as": "yc"}
-        ]
-      },
-      {
-        "name": "finalTable",
-        "source": ["plottedStacks"],
-        "transform": [{"type": "filter", "expr": "datum.type == 'data'"}]
-      },
-      {
-        "name": "linkTable",
-        "source": ["input"],
-        "transform": [
-          {"type": "filter", "expr": "datum.source != null"},
-          {
-            "type": "lookup",
-            "from": "finalTable",
-            "key": "name",
-            "values": ["y0", "y1", "stack", "sort"],
-            "fields": ["source"],
-            "as": ["sourceStacky0", "sourceStacky1", "sourceStack", "sourceSort"]
-          },
-          {
-            "type": "lookup",
-            "from": "finalTable",
-            "key": "name",
-            "values": ["y0", "y1", "stack", "sort"],
-            "fields": ["destination"],
-            "as": [
-              "destinationStacky0",
-              "destinationStacky1",
-              "destinationStack",
-              "destinationSort"
+  "$schema": "https://vega.github.io/schema/vega/v5.0.json",
+  "width": 1200,
+  "height": 800,
+  "data": [
+    {
+      "name": "continent_data",
+      "values": {
+        "aggregations": {
+          "table": {
+            "buckets": [
+              {
+                "key": { "stk1": "Africa", "stk2": "Gold Medal" },
+                "doc_count": 13
+              },
+              {
+                "key": { "stk1": "Africa", "stk2": "Silver Medal" },
+                "doc_count": 12
+              },
+              {
+                "key": { "stk1": "Africa", "stk2": "Bronze Medal" },
+                "doc_count": 14
+              },
+              {
+                "key": { "stk1": "Asia", "stk2": "Gold Medal" },
+                "doc_count": 103
+              },
+              {
+                "key": { "stk1": "Asia", "stk2": "Silver Medal" },
+                "doc_count": 86
+              },
+              {
+                "key": { "stk1": "Asia", "stk2": "Bronze Medal" },
+                "doc_count": 99
+              },
+              {
+                "key": { "stk1": "Europe", "stk2": "Gold Medal" },
+                "doc_count": 122
+              },
+              {
+                "key": { "stk1": "Europe", "stk2": "Silver Medal" },
+                "doc_count": 127
+              },
+              {
+                "key": { "stk1": "Europe", "stk2": "Bronze Medal" },
+                "doc_count": 164
+              },
+              {
+                "key": { "stk1": "Oceania", "stk2": "Gold Medal" },
+                "doc_count": 28
+              },
+              {
+                "key": { "stk1": "Oceania", "stk2": "Silver Medal" },
+                "doc_count": 27
+              },
+              {
+                "key": { "stk1": "Oceania", "stk2": "Bronze Medal" },
+                "doc_count": 19
+              },
+              {
+                "key": { "stk1": "North America", "stk2": "Gold Medal" },
+                "doc_count": 56
+              },
+              {
+                "key": { "stk1": "North America", "stk2": "Silver Medal" },
+                "doc_count": 60
+              },
+              {
+                "key": { "stk1": "North America", "stk2": "Bronze Medal" },
+                "doc_count": 70
+              },
+              {
+                "key": { "stk1": "South America", "stk2": "Gold Medal" },
+                "doc_count": 6
+              },
+              {
+                "key": { "stk1": "South America", "stk2": "Silver Medal" },
+                "doc_count": 14
+              },
+              {
+                "key": { "stk1": "South America", "stk2": "Bronze Medal" },
+                "doc_count": 15
+              }
             ]
-          },
-          {
-            "type": "stack",
-            "groupby": ["source"],
-            "sort": {"field": "destinationSort", "order": "descending"},
-            "field": "value",
-            "offset": "zero",
-            "as": ["syi0", "syi1"]
-          },
-          {
-            "type": "formula",
-            "expr": "datum.syi0+datum.sourceStacky0",
-            "as": "sy0"
-          },
-          {"type": "formula", "expr": "datum.sy0+datum.value", "as": "sy1"},
-          {
-            "type": "stack",
-            "groupby": ["destination"],
-            "sort": {"field": "sourceSort", "order": "descending"},
-            "field": "value",
-            "offset": "zero",
-            "as": ["dyi0", "dyi1"]
-          },
-          {
-            "type": "formula",
-            "expr": "datum.dyi0+datum.destinationStacky0",
-            "as": "dy0"
-          },
-          {"type": "formula", "expr": "datum.dy0+datum.value", "as": "dy1"},
-          {"type": "formula", "expr": "((datum.value)/2)+datum.sy0", "as": "syc"},
-          {"type": "formula", "expr": "((datum.value)/2)+datum.dy0", "as": "dyc"},
-          {
-            "type": "linkpath",
-            "orient": "horizontal",
-            "shape": "diagonal",
-            "sourceY": {"expr": "scale('y', datum.syc)"},
-            "sourceX": {
-              "expr": "scale('x', toNumber(  datum.sourceStack))+ bandwidth('x')"
-            },
-            "targetY": {"expr": "scale('y', datum.dyc)"},
-            "targetX": {"expr": "scale('x', datum.destinationStack)"}
-          },
-          {
-            "type": "formula",
-            "expr": "range('y')[0]-scale('y', datum.value)",
-            "as": "strokeWidth"
-          }
-        ]
-      }
-    ],
-    "scales": [
-      {
-        "name": "x",
-        "type": "band",
-        "range": "width",
-        "domain": {"data": "finalTable", "field": "stack"},
-        "paddingInner": 0.88
-      },
-      {
-        "name": "y",
-        "type": "linear",
-        "range": "height",
-        "domain": {"data": "finalTable", "field": "y1"},
-        "reverse": false
-      },
-      {
-        "name": "color",
-        "type": "ordinal",
-        "range": {"scheme": "category20"},
-        "domain": {"data": "stacks", "field": "name"}
-      }
-    ],
-    "marks": [
-      {
-        "type": "rect",
-        "from": {"data": "finalTable"},
-        "encode": {
-          "update": {
-            "x": {"scale": "x", "field": "stack"},
-            "width": {"scale": "x", "band": 1},
-            "y": {"scale": "y", "field": "y0"},
-            "y2": {"scale": "y", "field": "y1"},
-            "fill": {"scale": "color", "field": "name"},
-            "fillOpacity": {"value": 0.75},
-            "strokeWidth": {"value": 0},
-            "stroke": {"scale": "color", "field": "name"}
-          },
-          "hover": {
-            "tooltip": {
-              "signal": "{'Name':datum.name, 'Value':datum.value + ' Medals'}"
-            },
-            "fillOpacity": {"value": 1}
           }
         }
       },
-      {
-        "type": "path",
-        "name": "links",
-        "from": {"data": "linkTable"},
-        "clip": true,
-        "encode": {
-          "update": {
-            "strokeWidth": {"field": "strokeWidth"},
-            "path": {"field": "path"},
-            "strokeOpacity": {"signal": "0.3"},
-            "stroke": {"field": "destination", "scale": "color"}
+      "format": { "property": "aggregations.table.buckets" },
+      "transform": [
+        { "type": "formula", "expr": "datum.key.stk1", "as": "stk1" },
+        { "type": "formula", "expr": "datum.key.stk2", "as": "stk2" },
+        { "type": "formula", "expr": "datum.doc_count", "as": "size" }
+      ]
+    },
+    {
+      "name": "nodes",
+      "source": "continent_data",
+      "transform": [
+        {
+          "type": "filter",
+          "expr": "!groupSelector || groupSelector.stk1 == datum.stk1 || groupSelector.stk2 == datum.stk2"
+        },
+        { "type": "formula", "expr": "datum.stk1+datum.stk2", "as": "key" },
+        {
+          "type": "fold",
+          "fields": ["stk1", "stk2"],
+          "as": ["stack", "grpId"]
+        },
+        {
+          "type": "formula",
+          "expr": "datum.stack == 'stk1' ? datum.stk1+' '+datum.stk2 : datum.stk2+' '+datum.stk1",
+          "as": "sortField"
+        },
+        {
+          "type": "stack",
+          "groupby": ["stack"],
+          "sort": { "field": "sortField", "order": "descending" },
+          "field": "size"
+        },
+        { "type": "formula", "expr": "(datum.y0+datum.y1)/2", "as": "yc" }
+      ]
+    },
+    {
+      "name": "groups",
+      "source": "nodes",
+      "transform": [
+        {
+          "type": "aggregate",
+          "groupby": ["stack", "grpId"],
+          "fields": ["size"],
+          "ops": ["sum"],
+          "as": ["total"]
+        },
+        {
+          "type": "stack",
+          "groupby": ["stack"],
+          "sort": { "field": "grpId", "order": "descending" },
+          "field": "total"
+        },
+        { "type": "formula", "expr": "scale('y', datum.y0)", "as": "scaledY0" },
+        { "type": "formula", "expr": "scale('y', datum.y1)", "as": "scaledY1" },
+        {
+          "type": "formula",
+          "expr": "datum.stack == 'stk1'",
+          "as": "rightLabel"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.total/domain('y')[1]",
+          "as": "percentage"
+        }
+      ]
+    },
+    {
+      "name": "destinationNodes",
+      "source": "nodes",
+      "transform": [{ "type": "filter", "expr": "datum.stack == 'stk2'" }]
+    },
+    {
+      "name": "edges",
+      "source": "nodes",
+      "transform": [
+        { "type": "filter", "expr": "datum.stack == 'stk1'" },
+        {
+          "type": "lookup",
+          "from": "destinationNodes",
+          "key": "key",
+          "fields": ["key"],
+          "as": ["target"]
+        },
+        {
+          "type": "linkpath",
+          "orient": "horizontal",
+          "shape": "diagonal",
+          "sourceY": { "expr": "scale('y', datum.yc)" },
+          "sourceX": { "expr": "scale('x', 'stk1') + bandwidth('x')" },
+          "targetY": { "expr": "scale('y', datum.target.yc)" },
+          "targetX": { "expr": "scale('x', 'stk2')" }
+        },
+        {
+          "type": "formula",
+          "expr": "range('y')[0]-scale('y', datum.size)",
+          "as": "strokeWidth"
+        },
+        {
+          "type": "formula",
+          "expr": "datum.size/domain('y')[1]",
+          "as": "percentage"
+        }
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "x",
+      "type": "band",
+      "range": "width",
+      "domain": ["stk1", "stk2"],
+      "paddingOuter": 0.05,
+      "paddingInner": 0.95
+    },
+    {
+      "name": "y",
+      "type": "linear",
+      "range": "height",
+      "domain": { "data": "nodes", "field": "y1" }
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "range": [
+        "#542788",
+        "#8073ac",
+        "#b2abd2",
+        "#fdb863",
+        "#e08214",
+        "#b35806",
+        "#8e0152",
+        "#c51b7d",
+        "#de77ae",
+        "#f1b6da",
+        "#fdbe85"
+      ],
+      "domain": { "data": "continent_data", "fields": ["stk1", "stk2"] }
+    },
+    {
+      "name": "stackNames",
+      "type": "ordinal",
+      "range": ["Source", "Destination"],
+      "domain": ["stk1", "stk2"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "path",
+      "name": "edgeMark",
+      "from": { "data": "edges" },
+      "clip": true,
+      "encode": {
+        "update": {
+          "stroke": [
+            {
+              "test": "groupSelector && groupSelector.stack=='stk1'",
+              "scale": "color",
+              "field": "stk2"
+            },
+            { "scale": "color", "field": "stk1" }
+          ],
+          "strokeWidth": { "field": "strokeWidth" },
+          "path": { "field": "path" },
+          "strokeOpacity": {
+            "signal": "!groupSelector && (groupHover.stk1 == datum.stk1 || groupHover.stk2 == datum.stk2) ? 0.9 : 0.3"
           },
-          "hover": {
-            "strokeOpacity": {"value": 1},
-            "tooltip": {
-              "signal": "{'Source':datum.source,'Destination':datum.destination, 'Value':datum.value + ' Medals'}"
+          "zindex": {
+            "signal": "!groupSelector && (groupHover.stk1 == datum.stk1 || groupHover.stk2 == datum.stk2) ? 1 : 0"
+          },
+          "tooltip": {
+            "signal": "'Continent: ' + datum.stk1 + ' | Medal : ' + datum.stk2 + ' | Count: ' + format(datum.size, ',.0f') + ' (' + format(datum.percentage, '.1%') + ')'"
+          }
+        },
+        "hover": {
+          "strokeOpacity": { "value": 1 }
+        }
+      }
+    },
+    {
+      "type": "rect",
+      "name": "groupMark",
+      "from": { "data": "groups" },
+      "encode": {
+        "enter": {
+          "fill": { "scale": "color", "field": "grpId" },
+          "width": { "scale": "x", "band": 1 }
+        },
+        "update": {
+          "x": { "scale": "x", "field": "stack" },
+          "y": { "field": "scaledY0" },
+          "y2": { "field": "scaledY1" },
+          "fillOpacity": { "value": 1 },
+          "tooltip": {
+            "signal": "datum.grpId + '   ' + format(datum.total, ',.0f') + '   (' + format(datum.percentage, '.1%') + ')'"
+          }
+        },
+        "hover": {
+          "fillOpacity": { "value": 1 }
+        }
+      }
+    },
+    {
+      "type": "text",
+      "from": { "data": "groups" },
+      "interactive": false,
+      "encode": {
+        "update": {
+          "x": {
+            "signal": "scale('x', datum.stack) + (datum.rightLabel ? bandwidth('x') + 8 : -8)"
+          },
+          "yc": { "signal": "(datum.scaledY0 + datum.scaledY1)/2" },
+          "align": { "signal": "datum.rightLabel ? 'left' : 'right'" },
+          "baseline": { "value": "middle" },
+          "fontWeight": { "value": "bold" },
+          "fontSize": { "value": 16 },
+          "text": {
+            "signal": "abs(datum.scaledY0-datum.scaledY1) > 13 ? datum.grpId : ''"
+          }
+        }
+      }
+    }
+    ,
+    {
+      "type": "group",
+      "data": [
+        {
+          "name": "dataForShowAll",
+          "values": [{}],
+          "transform": [{ "type": "filter", "expr": "groupSelector" }]
+        }
+      ],
+      "encode": {
+        "enter": {
+          "xc": { "signal": "width/2" },
+          "y": { "value": 30 },
+          "width": { "value": 80 },
+          "height": { "value": 30 }
+        }
+      },
+      "marks": [
+        {
+          "type": "group",
+          "name": "groupReset",
+          "from": { "data": "dataForShowAll" },
+          "encode": {
+            "enter": {
+              "cornerRadius": { "value": 6 },
+              "fill": { "value": "#f5f5f5" },
+              "stroke": { "value": "#c1c1c1" },
+              "strokeWidth": { "value": 2 },
+              "height": {
+                "field": { "group": "height" }
+              },
+              "width": {
+                "field": { "group": "width" }
+              }
+            },
+            "update": {
+              "opacity": { "value": 1 }
+            },
+            "hover": {
+              "opacity": { "value": 1 }
             }
-          }
+          },
+          "marks": [
+            {
+              "type": "text",
+              "interactive": false,
+              "encode": {
+                "enter": {
+                  "xc": {
+                    "field": { "group": "width" },
+                    "mult": 0.5
+                  },
+                  "yc": {
+                    "field": { "group": "height" },
+                    "mult": 0.5,
+                    "offset": -2
+                  },
+                  "align": { "value": "center" },
+                  "baseline": { "value": "middle" },
+                  "fontWeight": { "value": "bold" },
+                  "text": { "value": "Show All" }
+                }
+              }
+            }
+          ]
         }
-      }
-    ]
-  }
-  
+      ]
+    }
+  ],
+  "signals": [
+    {
+      "name": "groupHover",
+      "value": {},
+      "on": [
+        {
+          "events": "@groupMark:mouseover",
+          "update": "{stk1:datum.stack=='stk1' && datum.grpId, stk2:datum.stack=='stk2' && datum.grpId}"
+        },
+        { "events": "mouseout", "update": "{}" }
+      ]
+    },
+    {
+      "name": "groupSelector",
+      "value": false,
+      "on": [
+        {
+          "events": "@groupMark:click!",
+          "update": "{stack:datum.stack, stk1:datum.stack=='stk1' && datum.grpId, stk2:datum.stack=='stk2' && datum.grpId}"
+        },
+        {
+          "events": [
+            { "type": "click", "markname": "groupReset" },
+            { "type": "dblclick" }
+          ],
+          "update": "false"
+        }
+      ]
+    }
+  ]
+}

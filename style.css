@@ -40,7 +40,7 @@ p {
     border-radius: 20px;
 }
 
-#vis-chloropleth, #vis-wordcloud, #vis-donut, #vis-lollipop, #vis-isotype, #vis-dotplot {
+#vis-chloropleth, #vis-wordcloud, #vis-donut, #vis-lollipop, #vis-isotype, #vis-dotplot, #vis-sankey, #vis-bar {
     margin: 10px auto;
     width: 1200px;
     padding: 20px;

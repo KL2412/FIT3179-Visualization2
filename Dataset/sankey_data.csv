@@ -1,0 +1,252 @@
+country_long,country_code,id,total_population,Gold Medal,Silver Medal,Bronze Medal,Total,continent
+Afghanistan,AFG,4,42239854,0,0,0,0,Asia
+Åland Islands,ALA,248,0,0,0,0,0,Europe
+Albania,ALB,8,2745972,0,0,2,2,Europe
+Algeria,DZA,12,45606480,2,0,1,3,Africa
+American Samoa,ASM,16,43914,0,0,0,0,Oceania
+Andorra,AND,20,80088,0,0,0,0,Europe
+Angola,AGO,24,36684202,0,0,0,0,Africa
+Anguilla,AIA,660,0,0,0,0,0,North America
+Antarctica,ATA,10,4490,0,0,0,0,Antarctica
+Antigua and Barbuda,ATG,28,94298,0,0,0,0,North America
+Argentina,ARG,32,46654581,1,1,1,3,South America
+Armenia,ARM,51,2777970,0,3,1,4,Asia
+Aruba,ABW,533,106277,0,0,0,0,North America
+Australia,AUS,36,26638544,18,19,16,53,Oceania
+Austria,AUT,40,9132383,2,0,3,5,Europe
+Azerbaijan,AZE,31,10112555,2,2,3,7,Asia
+Bahamas,BHS,44,412623,0,0,0,0,North America
+Bahrain,BHR,48,1485509,0,0,0,0,Asia
+Bangladesh,BGD,50,172954319,0,0,0,0,Asia
+Barbados,BRB,52,281995,0,0,0,0,North America
+Belarus,BLR,112,9178298,0,0,0,0,Europe
+Belgium,BEL,56,11822592,3,1,6,10,Europe
+Belize,BLZ,84,410825,0,0,0,0,North America
+Benin,BEN,204,13712828,0,0,0,0,Africa
+Bermuda,BMU,60,63489,0,0,0,0,North America
+Bhutan,BTN,64,787424,0,0,0,0,Asia
+"Bolivia, Plurinational State of",BOL,68,12388571,0,0,0,0,South America
+"Bonaire, Sint Eustatius and Saba",BES,535,0,0,0,0,0,South America
+Bosnia and Herzegovina,BIH,70,3210847,0,0,0,0,Europe
+Botswana,BWA,72,2675352,1,1,0,2,Africa
+Bouvet Island,BVT,74,0,0,0,0,0,Antarctica
+Brazil,BRA,76,216422446,3,7,10,20,South America
+British Indian Ocean Territory,IOT,86,0,0,0,0,0,Asia
+Brunei,BRN,96,452524,2,1,1,4,Asia
+Bulgaria,BGR,100,6430370,3,1,3,7,Europe
+Burkina Faso,BFA,854,23251485,0,0,0,0,Africa
+Burundi,BDI,108,13238559,0,0,0,0,Africa
+Cabo Verde,CPV,132,598682,0,0,1,1,Africa
+Cambodia,KHM,116,16944826,0,0,0,0,Asia
+Cameroon,CMR,120,28647293,0,0,0,0,Africa
+Canada,CAN,124,40097761,9,7,11,27,North America
+Cayman Islands,CYM,136,69310,0,0,0,0,North America
+Central African Republic,CAF,140,5742315,0,0,0,0,Africa
+Chad,TCD,148,18278568,0,0,0,0,Africa
+Chile,CHL,152,19629590,1,1,0,2,South America
+China,CHN,156,1410710000,40,27,24,91,Asia
+Christmas Island,CXR,162,0,0,0,0,0,Asia
+Cocos (Keeling) Islands,CCK,166,0,0,0,0,0,Asia
+Colombia,COL,170,52085168,0,3,1,4,South America
+Comoros,COM,174,852075,0,0,0,0,Africa
+Congo,COG,178,6106869,0,0,0,0,Africa
+"Congo, Democratic Republic of the",COD,180,102262808,0,0,0,0,Africa
+Cook Islands,COK,184,0,0,0,0,0,Oceania
+Costa Rica,CRI,188,5212173,0,0,0,0,North America
+Côte d'Ivoire,CIV,384,28873034,0,0,1,1,Africa
+Croatia,HRV,191,3853200,2,2,3,7,Europe
+Cuba,CUB,192,11194449,2,1,6,9,North America
+Curaçao,CUW,531,147862,0,0,0,0,South America
+Cyprus,CYP,196,1260138,0,1,0,1,Europe
+Czechia,CZE,203,10873689,3,0,2,5,Europe
+Denmark,DNK,208,5946952,2,2,5,9,Europe
+Djibouti,DJI,262,1136455,0,0,0,0,Africa
+Dominica,DMA,212,73040,1,0,0,1,North America
+Dominican Republic,DOM,214,11332972,1,0,2,3,North America
+Ecuador,ECU,218,18190484,1,2,2,5,South America
+Egypt,EGY,818,112716598,1,1,1,3,Africa
+El Salvador,SLV,222,6364943,0,0,0,0,North America
+Equatorial Guinea,GNQ,226,1714671,0,0,0,0,Africa
+Eritrea,ERI,232,3748901,0,0,0,0,Africa
+Estonia,EST,233,1366188,0,0,0,0,Europe
+Eswatini,SWZ,748,1210822,0,0,0,0,Africa
+Ethiopia,ETH,231,126527060,1,3,0,4,Africa
+Falkland Islands (Malvinas),FLK,238,0,0,0,0,0,South America
+Faroe Islands,FRO,234,53270,0,0,0,0,Europe
+Fiji,FJI,242,936375,0,1,0,1,Oceania
+Finland,FIN,246,5584264,0,0,0,0,Europe
+France,FRA,250,68170228,16,26,22,64,Europe
+French Guiana,GUF,254,0,0,0,0,0,South America
+French Polynesia,PYF,258,308872,0,0,0,0,Oceania
+French Southern Territories,ATF,260,0,0,0,0,0,Antarctica
+Gabon,GAB,266,2436566,0,0,0,0,Africa
+Gambia,GMB,270,2773168,0,0,0,0,Africa
+Georgia,GEO,268,3760365,3,3,1,7,Asia
+Germany,DEU,276,84482267,12,13,8,33,Europe
+Ghana,GHA,288,34121985,0,0,0,0,Africa
+Gibraltar,GIB,292,32688,0,0,0,0,Europe
+Greece,GRC,300,10361295,1,1,6,8,Europe
+Greenland,GRL,304,56865,0,0,0,0,North America
+Grenada,GRD,308,126183,0,0,2,2,North America
+Guadeloupe,GLP,312,0,0,0,0,0,North America
+Guam,GUM,316,172952,0,0,0,0,Oceania
+Guatemala,GTM,320,17602431,1,0,1,2,North America
+Guernsey,GGY,831,0,0,0,0,0,Europe
+Guinea,GIN,324,14190612,0,0,0,0,Africa
+Guinea-Bissau,GNB,624,2150842,0,0,0,0,Africa
+Guyana,GUY,328,813834,0,0,0,0,South America
+Haiti,HTI,332,11724763,0,0,0,0,North America
+Heard Island and McDonald Islands,HMD,334,0,0,0,0,0,Antarctica
+Holy See,VAT,336,0,0,0,0,0,Europe
+Honduras,HND,340,10593798,0,0,0,0,North America
+Hong Kong,HKG,344,7536100,2,0,2,4,Asia
+Hungary,HUN,348,9589872,6,7,6,19,Europe
+Iceland,ISL,352,393600,0,0,0,0,Europe
+India,IND,356,1428627663,0,1,5,6,Asia
+Indonesia,IDN,360,277534122,2,0,0,2,Asia
+"Iran",IRN,364,89172767,3,6,3,12,Asia
+Iraq,IRQ,368,45504560,0,0,0,0,Asia
+Ireland,IRL,372,5262382,4,0,3,7,Europe
+Isle of Man,IMN,833,84710,0,0,0,0,Europe
+Israel,ISR,376,9756700,1,5,1,7,Asia
+Italy,ITA,380,58761146,12,13,15,40,Europe
+Jamaica,JAM,388,2825544,1,3,2,6,North America
+Japan,JPN,392,124516650,20,12,13,45,Asia
+Jersey,JEY,832,0,0,0,0,0,Europe
+Jordan,JOR,400,11337052,0,1,0,1,Asia
+Kazakhstan,KAZ,398,19900177,1,3,3,7,Asia
+Kenya,KEN,404,55100586,4,2,5,11,Africa
+Kiribati,KIR,296,133515,0,0,0,0,Oceania
+"North Korea",PRK,408,26160821,0,2,4,6,Asia
+"South Korea",KOR,410,51712619,13,9,10,32,Asia
+Kosovo,KOS,-98,1794248,0,0,0,0,Europe
+Kuwait,KWT,414,4310108,0,0,0,0,Asia
+Kyrgyzstan,KGZ,417,7100800,0,2,4,6,Asia
+Lao People's Democratic Republic,LAO,418,7633779,0,0,0,0,Asia
+Latvia,LVA,428,1881750,0,0,0,0,Europe
+Lebanon,LBN,422,5353930,0,0,0,0,Asia
+Lesotho,LSO,426,2330318,0,0,0,0,Africa
+Liberia,LBR,430,5418377,0,0,0,0,Africa
+Libya,LBY,434,6888388,0,0,0,0,Africa
+Liechtenstein,LIE,438,39584,0,0,0,0,Europe
+Lithuania,LTU,440,2871897,0,2,2,4,Europe
+Luxembourg,LUX,442,668606,0,0,0,0,Europe
+Macao,MAC,446,704149,0,0,0,0,Asia
+Madagascar,MDG,450,30325732,0,0,0,0,Africa
+Malawi,MWI,454,20931751,0,0,0,0,Africa
+Malaysia,MYS,458,34308525,0,0,2,2,Asia
+Maldives,MDV,462,521021,0,0,0,0,Asia
+Mali,MLI,466,23293698,0,0,0,0,Africa
+Malta,MLT,470,553214,0,0,0,0,Europe
+Marshall Islands,MHL,584,41996,0,0,0,0,Oceania
+Martinique,MTQ,474,0,0,0,0,0,North America
+Mauritania,MRT,478,4862989,0,0,0,0,Africa
+Mauritius,MUS,480,1261041,0,0,0,0,Africa
+Mayotte,MYT,175,0,0,0,0,0,Africa
+Mexico,MEX,484,128455567,0,3,2,5,North America
+"Micronesia, Federated States of",FSM,583,115224,0,0,0,0,Oceania
+"Moldova, Republic of",MDA,498,2486891,0,1,3,4,Europe
+Monaco,MCO,492,36297,0,0,0,0,Europe
+Mongolia,MNG,496,3447157,0,1,0,1,Asia
+Montenegro,MNE,499,616177,0,0,0,0,Europe
+Montserrat,MSR,500,0,0,0,0,0,North America
+Morocco,MAR,504,37840044,1,0,1,2,Africa
+Mozambique,MOZ,508,33897354,0,0,0,0,Africa
+Myanmar,MMR,104,54577997,0,0,0,0,Asia
+Namibia,NAM,516,2604172,0,0,0,0,Africa
+Nauru,NRU,520,12780,0,0,0,0,Oceania
+Nepal,NPL,524,30896590,0,0,0,0,Asia
+"Netherlands, Kingdom of the",NLD,528,17879488,15,7,12,34,Europe
+New Caledonia,NCL,540,267940,0,0,0,0,Oceania
+New Zealand,NZL,554,5223100,10,7,3,20,Oceania
+Nicaragua,NIC,558,7046310,0,0,0,0,North America
+Niger,NER,562,27202843,0,0,0,0,Africa
+Nigeria,NGA,566,223804632,0,0,0,0,Africa
+Niue,NIU,570,0,0,0,0,0,Oceania
+Norfolk Island,NFK,574,0,0,0,0,0,Oceania
+North Macedonia,MKD,807,1811980,0,0,0,0,Europe
+Northern Mariana Islands,MNP,580,49796,0,0,0,0,Oceania
+Norway,NOR,578,5519594,4,1,3,8,Europe
+Oman,OMN,512,4644384,0,0,0,0,Asia
+Pakistan,PAK,586,240485658,1,0,0,1,Asia
+Palau,PLW,585,18058,0,0,0,0,Oceania
+"Palestine, State of",PSE,275,5165775,0,0,0,0,Asia
+Panama,PAN,591,4468087,0,1,0,1,North America
+Papua New Guinea,PNG,598,10329931,0,0,0,0,Oceania
+Paraguay,PRY,600,6861524,0,0,0,0,South America
+Peru,PER,604,34352719,0,0,1,1,South America
+Philippines,PHL,608,117337368,2,0,2,4,Asia
+Pitcairn,PCN,612,0,0,0,0,0,Oceania
+Poland,POL,616,36685849,1,4,5,10,Europe
+Portugal,PRT,620,10525347,1,2,1,4,Europe
+Puerto Rico,PRI,630,3205691,0,0,2,2,North America
+Qatar,QAT,634,2716391,0,0,1,1,Asia
+Réunion,REU,638,0,0,0,0,0,Europe
+Romania,ROU,642,19056116,3,4,2,9,Europe
+Russian Federation,RUS,643,143826130,0,0,0,0,Europe/Asia
+Rwanda,RWA,646,14094683,0,0,0,0,Africa
+Saint Barthélemy,BLM,652,0,0,0,0,0,Europe
+"Saint Helena, Ascension and Tristan da Cunha",SHN,654,0,0,0,0,0,Africa
+Saint Kitts and Nevis,KNA,659,47755,0,0,0,0,North America
+Saint Lucia,LCA,662,180251,1,1,0,2,North America
+Saint Martin (French part),MAF,663,32077,0,0,0,0,North America
+Saint Pierre and Miquelon,SPM,666,0,0,0,0,0,North America
+Saint Vincent and the Grenadines,VCT,670,103698,0,0,0,0,North America
+Samoa,WSM,882,225681,0,0,0,0,Oceania
+San Marino,SMR,674,33642,0,0,0,0,Europe
+Sao Tome and Principe,STP,678,231856,0,0,0,0,Africa
+Saudi Arabia,SAU,682,36947025,0,0,0,0,Asia
+Senegal,SEN,686,17763163,0,0,0,0,Africa
+Serbia,SRB,688,6618026,3,1,1,5,Europe
+Seychelles,SYC,690,119773,0,0,0,0,Africa
+Sierra Leone,SLE,694,8791092,0,0,0,0,Africa
+Singapore,SGP,702,5917648,0,0,1,1,Asia
+Sint Maarten (Dutch part),SXM,534,41163,0,0,0,0,North America
+Slovakia,SVK,703,5426740,0,0,1,1,Europe
+Slovenia,SVN,705,2120937,2,1,0,3,Europe
+Solomon Islands,SLB,90,740424,0,0,0,0,Oceania
+Somalia,SOM,706,18143378,0,0,0,0,Africa
+Somaliland,SOL,-99,5096159,0,0,0,0,Africa
+South Africa,ZAF,710,60414495,1,3,2,6,Africa
+South Georgia and the South Sandwich Islands,SGS,239,0,0,0,0,0,Antarctica
+South Sudan,SSD,728,11088796,0,0,0,0,Africa
+Spain,ESP,724,48373336,5,4,9,18,Europe
+Sri Lanka,LKA,144,22037000,0,0,0,0,Asia
+Sudan,SDN,729,48109006,0,0,0,0,Africa
+Suriname,SUR,740,623236,0,0,0,0,South America
+Svalbard and Jan Mayen,SJM,744,0,0,0,0,0,Europe
+Sweden,SWE,752,10536632,4,4,3,11,Europe
+Switzerland,CHE,756,8849852,1,2,5,8,Europe
+Syrian Arab Republic,SYR,760,23227014,0,0,0,0,Asia
+"Taiwan",TWN,158,23347374,2,0,5,7,Asia
+Tajikistan,TJK,762,10143543,0,0,3,3,Asia
+"Tanzania, United Republic of",TZA,834,67438106,0,0,0,0,Africa
+Thailand,THA,764,71801279,1,3,2,6,Asia
+Timor-Leste,TLS,626,1360596,0,0,0,0,Asia
+Togo,TGO,768,9053799,0,0,0,0,Africa
+Tokelau,TKL,772,0,0,0,0,0,Oceania
+Tonga,TON,776,107773,0,0,0,0,Oceania
+Trinidad and Tobago,TTO,780,1534937,0,0,0,0,North America
+Tunisia,TUN,788,12458223,1,1,1,3,Africa
+Türkiye,TUR,792,85326000,0,3,5,8,Asia
+Turkmenistan,TKM,795,6516100,0,0,0,0,Asia
+Turks and Caicos Islands,TCA,796,46062,0,0,0,0,North America
+Tuvalu,TUV,798,11396,0,0,0,0,Oceania
+Uganda,UGA,800,48582334,1,1,0,2,Africa
+Ukraine,UKR,804,37000000,3,5,4,12,Europe
+United Arab Emirates,ARE,784,9516871,0,0,0,0,Asia
+United Kingdom of Great Britain and Northern Ireland,GBR,826,68350000,14,22,29,65,Europe
+United States of America,USA,840,334914895,40,44,42,126,North America
+United States Minor Outlying Islands,UMI,581,0,0,0,0,0,North America
+Uruguay,URY,858,3423108,0,0,0,0,South America
+Uzbekistan,UZB,860,36412350,8,2,3,13,Asia
+Vanuatu,VUT,548,334506,0,0,0,0,Oceania
+"Venezuela, Bolivarian Republic of",VEN,862,28838499,0,0,0,0,South America
+Viet Nam,VNM,704,98858950,0,0,0,0,Asia
+Virgin Islands (British),VGB,92,31538,0,0,0,0,North America
+Virgin Islands (U.S.),VIR,850,104917,0,0,0,0,North America
+Wallis and Futuna,WLF,876,0,0,0,0,0,Oceania
+Western Sahara,ESH,732,603253,0,0,0,0,Africa
+Yemen,YEM,887,34449825,0,0,0,0,Asia
+Zambia,ZMB,894,20569737,0,0,1,1,Africa
+Zimbabwe,ZWE,716,16665409,0,0,0,0,Africa

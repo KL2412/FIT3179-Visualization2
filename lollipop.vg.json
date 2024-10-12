@@ -35,7 +35,7 @@
           "type": "nominal",
           "axis": {
             "title": "Sport Category",
-            "labelAngle": 90,
+            "labelAngle": 45,
             "labelFontSize": 16,
             "titleFontSize": 20
           }

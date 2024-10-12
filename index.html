@@ -45,7 +45,13 @@
     </div>
 
     <div class="titleVizDiv">
-        <h2>Google Search Trends: Trending Sports during Olympics 2024</h2>
+        <h2>Medals Won By Continents</h2>
+        <div id="vis-sankey"></div>
+        <div id="vis-bar"></div>
+    </div>
+
+    <div class="titleVizDiv">
+        <h2>Google Search Trends: Trending Searches during Olympics 2024</h2>
         <div id="vis-wordcloud"></div>
     </div>
 
@@ -81,7 +87,7 @@
     </div>
 
     <div class="titleVizDiv">
-        <h2>Olympic Sports Over Years</h2>
+        <h2>Newly Introduced Olympic Sports Over Years</h2>
         <div id="vis-dotplot"></div>
         <h3>New Sports in Olympics 2024</h3>
         <div style="width: 30%; float:left">
@@ -161,6 +167,24 @@
             })
             .catch(error => {
                 console.error('Error loading the Dotplot spec:', error);
+            });
+
+        fetch('sankey.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#vis-sankey', spec);
+            })
+            .catch(error => {
+                console.error('Error loading the Sankey spec:', error);
+            });
+
+        fetch('bar.vg.json')
+            .then(response => response.json())
+            .then(spec => {
+                vegaEmbed('#vis-bar', spec);
+            })
+            .catch(error => {
+                console.error('Error loading the Bar spec:', error);
             });
     </script>
 </body>

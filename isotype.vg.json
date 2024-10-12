@@ -1,46 +1,50 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "config": {"view": {"stroke": ""}},
-    "width": 900,
-    "height": 130,
-    "data": {
-      "url": "Dataset/isotype_medals_total.csv",
-      "format": {"type": "csv"}
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "config": {"view": {"stroke": ""}},
+  "width": 900,
+  "height": 130,
+  "data": {
+    "url": "Dataset/isotype_medals_total.csv",
+    "format": {"type": "csv"}
+  },
+  "transform": [
+    {
+      "filter": "indexof(['United States', 'China', 'Japan', 'Australia', 'France'], datum.Country) != -1"
     },
-    "transform": [
-      {
-        "filter": "indexof(['United States', 'China', 'Japan', 'Australia', 'France'], datum.Country) != -1"
-      },
-      {
-        "calculate": "{'Gold': '🥇', 'Silver': '🥈', 'Bronze': '🥉'}[datum.Medal]",
-        "as": "emoji"
-      },
-      {
-        "window": [{"op": "rank", "as": "rank"}],
-        "groupby": ["Country", "Medal"]
-      }
-    ],
-    "mark": {"type": "text", "baseline": "middle"},
-    "encoding": {
-      "x": {"field": "rank", "type": "ordinal", "axis": null},
-      "y": {
-        "field": "Medal",
-        "type": "nominal",
-        "axis": null,
-        "sort": ["Gold", "Silver", "Bronze"]
-      },
-      "row": {
-        "field": "Country",
-        "header": {
-          "title": "",
-          "labelAngle": 0,
-          "labelFontSize": 16,
-          "labelAlign": "left"
-        },
-        "sort": ["United States", "China", "Japan", "Australia", "France"]
-      },
-      "text": {"field": "emoji", "type": "nominal"},
-      "size": {"value": 40}
+    {
+      "calculate": "{'Gold': '🥇', 'Silver': '🥈', 'Bronze': '🥉'}[datum.Medal]",
+      "as": "emoji"
+    },
+    {
+      "window": [{"op": "rank", "as": "rank"}],
+      "groupby": ["Country", "Medal"]
     }
+  ],
+  "mark": {"type": "text", "baseline": "middle"},
+  "encoding": {
+    "x": {"field": "rank", "type": "ordinal", "axis": null},
+    "y": {
+      "field": "Medal",
+      "type": "nominal",
+      "axis": null,
+      "sort": ["Gold", "Silver", "Bronze"]
+    },
+    "row": {
+      "field": "Country",
+      "header": {
+        "title": "",
+        "labelAngle": 0,
+        "labelFontSize": 16,
+        "labelAlign": "left"
+      },
+      "sort": ["United States", "China", "Japan", "Australia", "France"]
+    },
+    "text": {"field": "emoji", "type": "nominal"},
+    "size": {"value": 40},
+    "tooltip": [
+      {"field": "Country", "title": "Country"},
+      {"field": "Medal", "title": "Medal Type"},
+      {"field": "Count", "title": "Count"}
+    ]
   }
-  
+}

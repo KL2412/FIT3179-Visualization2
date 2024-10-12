@@ -1,12 +1,22 @@
-Topics,Ratio
-Gymnastics,24
-Sailing,9
-Basketball,13
-Swimming,10
-Surfing,9
-Volleyball,9
-Sport climbing,5
-Skateboarding,6
-Breaking,5
-Tennis,5
-Climbing,5
+Topics,Ratio,Type
+Football,15,Sports
+Summer Olympic,14,Non-sports
+Breaking,12,Sports
+Paris,8,Non-sports
+Olympic Ceremony,6,Non-sports
+Olympic Medal,3,Non-sports
+Artistic gymnastics,3,Sports
+Golf,2,Sports
+Swimming,2,Sports
+Field hockey,1,Sports
+Javelin throw,1,Sports
+Javelin,1,Sports
+Artistic gymnastics,1,Sports
+Sport climbing,1,Sports
+Football,1,Sports
+India,1,Non-sports
+Badminton,1,Sports
+Beach volleyball,1,Sports
+Sail,1,Sports
+Volleyball,1,Sports
+Tennis,1,Sports

@@ -8,7 +8,7 @@
     {
       "filter": {
         "field": "discipline",
-        "oneOf": ["Artistic Gymnastics", "Basketball", "Surfing", "Sailing", "Volleyball", "Swimming"]
+        "oneOf": ["Football", "Breaking", "Golf", "Sport Climbing", "Volleyball", "Badminton"]
       }
     }
   ],
@@ -17,12 +17,13 @@
     "title": null, 
     "type": "nominal",
     "header": {
-      "labelFontSize": 16
+      "labelFontSize": 18
     }
   },
   "columns": 3,
+  "spacing": 100,
   "spec": {
-    "mark": {"type": "arc", "innerRadius": 80, "radius":150},
+    "mark": {"type": "arc", "innerRadius": 60, "radius":120},
     "encoding": {
       "theta": {
         "aggregate": "count",
@@ -38,7 +39,7 @@
           "labelFontSize": 14
         },
         "scale": {
-          "scheme": "category20"
+          "scheme": "rainbow"
         }
       },
       "tooltip": [

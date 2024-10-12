@@ -1,0 +1,70 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 900,
+    "height": 400,
+    "padding": 5,
+    "data": {
+      "name": "sankey_data",
+      "url": "Dataset/sankey_data.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum['Gold Medal'] + datum['Silver Medal'] + datum['Bronze Medal'] > 0"
+      },
+      {
+        "filter": "datum.continent == continent_selection"
+      },
+      {
+        "fold": ["Gold Medal", "Silver Medal", "Bronze Medal"],
+        "as": ["Medal Type", "count"]
+      }
+    ],
+    "params": [
+      {
+        "name": "continent_selection",
+        "value": "Africa",
+        "bind": {
+          "input": "select",
+          "options": ["Africa", "Asia", "Europe", "Oceania", "North America", "South America"],
+          "name": "Select Continent: "
+        }
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "x": {
+        "field": "country_long",
+        "type": "nominal",
+        "axis": {
+          "title": "Country",
+          "labelAngle": 45,
+          "labelAlign": "left",
+          "labelBaseline": "top",
+          "labelFontSize": 16,
+          "titleFontSize":16,
+          "grid": false
+        }
+      },
+      "y": {
+        "field": "count",
+        "type": "quantitative",
+        "axis": {"title": "Medal Count",
+        "labelFontSize": 16,
+        "titleFontSize":16,
+        "grid": false}
+      },
+      "color": {
+        "field": "Medal Type",
+        "type": "nominal",
+        "scale": {
+          "domain": ["Gold Medal", "Silver Medal", "Bronze Medal"],
+          "range": ["#FFD700", "#C0C0C0", "#CD7F32"]
+        }
+      },
+      "tooltip": [
+        {"field": "country_long", "type": "nominal", "title": "Country"},
+        {"field": "Medal Type", "type": "nominal", "title": "Medal Type"},
+        {"field": "count", "type": "quantitative", "title": "Count"}
+      ]
+    }
+  }

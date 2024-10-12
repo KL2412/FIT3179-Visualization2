@@ -3,16 +3,20 @@
   "data": {
     "url": "Dataset/summer_sport_over_year.csv"
   },
-  "width": 900,
-  "height": 900,
-  "mark": {"type": "circle", "size": 50},
+  "width": 800,
+  "height": 500,
+  "mark": {
+    "type": "circle",
+    "size": 100,
+    "opacity": 0.7
+  },
   "params": [
     {
       "name": "startYear",
-      "value": 1896,
+      "value": 1996,
       "bind": {
         "input": "range",
-        "min": 1896,
+        "min": 1964,
         "max": 2024,
         "step": 4,
         "name": "Select Start Year: "
@@ -29,7 +33,7 @@
       "field": "Year",
       "type": "ordinal",
       "axis": {
-        "labelAngle": -45,
+        "labelAngle": 0,
         "labelFontSize": 16,
         "titleFontSize": 20
       }
@@ -37,13 +41,17 @@
     "y": {
       "field": "Sport",
       "type": "nominal",
-      "sort": "-x",
+      "sort": "alphabetical",
       "axis": {
         "labelFontSize": 16,
         "titleFontSize": 20
       }
     },
-    "color": {"value": "steelblue"},
+    "color": {
+      "field": "Sport",
+      "type": "nominal",
+      "legend": {"title": "Sport"}
+    },
     "tooltip": [
       {"field": "Year", "type": "ordinal"},
       {"field": "Sport", "type": "nominal"}
@@ -52,7 +60,7 @@
   "config": {
     "view": {"stroke": null},
     "axis": {
-      "grid": true,
+      "grid": false,
       "tickBand": "extent"
     }
   }

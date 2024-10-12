@@ -1,62 +1,54 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 1000,
   "height": 800,
-  "padding": {"left": -200, "top": 30, "right": 30, "bottom": -280},
-  "data": {
-    "values": [
-      {"Topics": "Gymnastics", "Ratio": 24, "x": 300, "y": 250},
-      {"Topics": "Basketball", "Ratio": 13, "x": 240, "y": 190},
-      {"Topics": "Swimming", "Ratio": 10, "x": 420, "y": 300},
-      {"Topics": "Sailing", "Ratio": 9, "x": 200, "y": 330},
-      {"Topics": "Surfing", "Ratio": 9, "x": 380, "y": 150},
-      {"Topics": "Volleyball", "Ratio": 9, "x": 140, "y": 150},
-      {"Topics": "Sport climbing", "Ratio": 5, "x": 280, "y": 290},
-      {"Topics": "Skateboarding", "Ratio": 6, "x": 450, "y": 190},
-      {"Topics": "Breaking", "Ratio": 5, "x": 130, "y": 210},
-      {"Topics": "Tennis", "Ratio": 5, "x": 120, "y": 300}
-    ]
-  },
-  "mark": {
-    "type": "text",
-    "baseline": "middle",
-    "align": "center"
-  },
-  "encoding": {
-    "x": {
-      "field": "x",
-      "type": "quantitative",
-      "axis": null
-    },
-    "y": {
-      "field": "y",
-      "type": "quantitative",
-      "axis": null
-    },
-    "text": {
-      "field": "Topics"
-    },
-    "size": {
-      "field": "Ratio",
-      "type": "quantitative",
-      "scale": {
-        "range": [10, 100]
-      },
-      "legend": null
-    },
-    "color": {
-      "field": "Ratio",
-      "type": "quantitative",
-      "scale": {
-        "range": ["#d3e5ff", "#08306b"]
-      },
-      "legend": null
+  "padding": 0,
+  "autosize": "none",
+  "data": [
+    {
+      "name": "table",
+      "url": "Dataset/googletrend.csv",
+      "format": {"type": "csv"}
     }
-  },
-  "config": {
-    "text": {
-      "font": "Helvetica Neue, Arial"
+  ],
+  "scales": [
+    { 
+      "name": "size",
+      "type": "linear",
+      "domain": {"data": "table", "field": "Ratio"},
+      "range": [10, 100]
     },
-    "view": {"stroke": null}
-  }
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": ["Sports", "Non-sports"],
+      "range": ["#08306b", "#d3e5ff"]
+    }
+  ],
+  "marks": [
+    {
+      "type": "text",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "text": {"field": "Topics"},
+          "fill": {"scale": "color", "field": "Type"},
+          "font": {"value": "Helvetica Neue, Arial"},
+          "fontSize": {"scale": "size", "field": "Ratio"},
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"}
+        }
+      },
+      "transform": [
+        {
+          "type": "force",
+          "iterations": 500,
+          "forces": [
+            {"force": "center", "x": {"signal": "width / 2"}, "y": {"signal": "height / 2"}},
+            {"force": "nbody", "strength": -40}
+          ]
+        }
+      ]
+    }
+  ]
 }
