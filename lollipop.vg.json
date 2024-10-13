@@ -21,6 +21,14 @@
         {"op": "mean", "field": "age", "as": "avg_age"}
       ],
       "groupby": ["clean_disciplines"]
+    },
+    {
+      "window": [{"op": "min", "field": "youngest_age", "as": "global_youngest_age"}],
+      "frame": [null, null]
+    },
+    {
+      "window": [{"op": "max", "field": "oldest_age", "as": "global_oldest_age"}],
+      "frame": [null, null]
     }
   ],
   "layer": [
@@ -116,6 +124,24 @@
           {"field": "clean_disciplines", "type": "nominal", "title": "Sport"},
           {"field": "oldest_age", "type": "quantitative", "title": "Oldest Age"}
         ]
+      }
+    },
+    {
+      "mark": {"type": "text", "color": "red", "fontSize": 14, "align": "left", "dx": -50, "dy": 15},
+      "transform": [{"filter": "datum.oldest_age == datum.global_oldest_age"}],
+      "encoding": {
+        "x": {"field": "clean_disciplines", "type": "nominal"},
+        "y": {"field": "oldest_age", "type": "quantitative"},
+        "text": {"value": "Oldest Olympian"}
+      }
+    },
+    {
+      "mark": {"type": "text", "color": "red", "fontSize": 14, "align": "left", "dx": -60, "dy": 15},
+      "transform": [{"filter": "datum.youngest_age == datum.global_youngest_age"}],
+      "encoding": {
+        "x": {"field": "clean_disciplines", "type": "nominal"},
+        "y": {"field": "youngest_age", "type": "quantitative"},
+        "text": {"value": "Youngest Olympian"}
       }
     }
   ]

@@ -3,6 +3,50 @@
   "width": 1000,
   "height": 600,
   "background": "lightblue",
+  "params": [
+    {
+      "name": "zoom_level",
+      "value": 150,
+      "bind": {
+        "input": "range",
+        "min": 150,
+        "max": 1000,
+        "step": 10,
+        "name": "Zoom: "
+      }
+    },
+    {
+      "name": "center_to",
+      "value": [0, 0],
+      "bind": {
+        "input": "select",
+        "options": [
+          [0, 0],
+          [20, 10],
+          [100, 35],
+          [15, 50],
+          [-100, 40],
+          [135, -25],
+          [-60, -15]
+        ],
+        "labels": [
+          "Whole Map",
+          "Africa",
+          "Asia",
+          "Europe",
+          "North America",
+          "Oceania",
+          "South America"
+        ],
+        "name": "Map Centre: "
+      }
+    }
+  ],
+  "projection": {
+    "type": "equirectangular",
+    "center": {"expr": "center_to"},
+    "scale": {"expr": "zoom_level"}
+  },
   "layer": [
     {
       "data": {
@@ -79,9 +123,6 @@
           "as": "medals_per_capita"
         }
       ],
-      "projection": {
-        "type": "equirectangular"
-      },
       "mark": "geoshape",
       "encoding": {
         "shape": {
@@ -146,13 +187,55 @@
           "type": "single",
           "on": "mouseover",
           "empty": "none"
-        },
-        "click": {
-          "type": "single",
-          "on": "click",
-          "empty": "none"
         }
       }
+    },
+    {
+      "data": {
+        "values": [
+          {
+            "Longitude": -66,
+            "Latitude": 12,
+            "text": "Grenada, Dominica and \\Saint Lucia has the \\highest medals per capita."
+          },
+          {
+            "Longitude": 113,
+            "Latitude": 2,
+            "text": "Brunei Darussalam \\has 4th highest\\medals per capita."
+          }
+        ]
+      },
+      "encoding": {
+        "longitude": { "field": "Longitude", "type": "quantitative" },
+        "latitude": { "field": "Latitude", "type": "quantitative" }
+      },
+      "layer": [
+        {
+          "mark": {
+            "type": "point",
+            "size": 600,
+            "shape": "arrow",
+            "color": "red",
+            "fill": "pink",
+            "strokeWidth": 2,
+            "angle": 45
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "left",
+            "fontWeight": "bold",
+            "fontSize": 12,
+            "color": "blueviolet",
+            "dy": 30,
+            "dx": -80,
+            "lineBreak": "\\",
+            "lineHeight": 10
+          },
+          "encoding": { "text": { "field": "text" } }
+        }
+      ]
     }
   ]
 }
