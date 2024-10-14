@@ -194,14 +194,14 @@
       "data": {
         "values": [
           {
-            "Longitude": -66,
-            "Latitude": 12,
-            "text": "Grenada, Dominica and \\Saint Lucia has the \\highest medals per capita."
+            "Longitude": 165,
+            "Latitude": -50,
+            "text": "New Zealand has\\ the  second highest\\medals per capita."
           },
           {
             "Longitude": 113,
             "Latitude": 2,
-            "text": "Brunei Darussalam \\has 4th highest\\medals per capita."
+            "text": "Brunei Darussalam \\has the highest\\medals per capita."
           }
         ]
       },
